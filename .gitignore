@@ -2,6 +2,7 @@ nimcache/
 cube/
 dep/
 obj/
+.vscode/
 
 libstm32f3.a
 startup_stm32f303xc.s
