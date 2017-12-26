@@ -1,1 +1,12 @@
 nimcache/
+cube/
+dep/
+obj/
+
+libstm32f3.a
+startup_stm32f303xc.s
+stm32f303xc.ld
+demo.map
+demo.bin
+demo.elf
+demo.lst
