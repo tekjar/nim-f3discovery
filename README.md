@@ -27,7 +27,7 @@ Change `HAL_Delay` declaration to (Replace `NU32` with `uint32_t`) in `blinky.c`
 
 ```
 N_CDECL(void, HAL_Delay)(uint32_t millis);
-``
+```
 
 
 ```
