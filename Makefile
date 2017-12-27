@@ -1,5 +1,5 @@
 # A name common to all output files (elf, map, hex, bin, lst)
-TARGET     = demo
+TARGET     = blinky
 NIM_PATH   = /usr/local/Cellar/nim/0.17.2/nim
 ###############################################################################
 # Architecture definitions
@@ -40,12 +40,16 @@ LDFILE = $(MCU_UC)Tx_FLASH.ld
 STARTUPFILE = startup_$(MCU_LC).s
 
 ###############################################################################
+# Hard includes. Other header files depends on some definitions in these headers
+
+HARD_INCLUDE = -include stm32f3xx_hal.h -include stm32f3_discovery.h
+###############################################################################
 # Build sources
 # Your C files from the /src directory
 
 SRCS       = blinky.c f3discovery.c stdlib_system.c
 SRCS      += system_$(MCU_FAMILY_LC).c
-SRCS      += stm32f3xx_it.c
+SRCS      += $(MCU_FAMILY_LC)_it.c
 
 ###############################################################################
 # Include search paths (-I)
@@ -129,7 +133,7 @@ dep obj:
 
 obj/%.o : %.c | dirs
 	@echo "[CC] $(CC) $(CFLAGS) $(notdir $<)"
-	$Q$(CC) $(CFLAGS) -c -o $@ $< -MMD -MF dep/$(*F).d
+	$Q$(CC) $(CFLAGS) $(HARD_INCLUDE) -c -o $@ $< -MMD -MF dep/$(*F).d
 
 $(TARGET).elf: $(OBJS)
 	@echo "[LD]      $(TARGET).elf"
