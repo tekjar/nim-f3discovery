@@ -35,5 +35,5 @@ make
 * Flash
 
 ```
-st-flash write demo.bin 0x8000000
+st-flash write blinky.bin 0x8000000
 ```
