@@ -18,15 +18,10 @@ Also change `NIM_PATH` to your nim installation path in `Makefile`
 * Compile blinky
 
 ```
-nim c -c --gc:none --cpu:arm --os:standalone --deadCodeElim:on --dynlibOverride:stm32f3 --passL:../cube/libstm32f3.a blinky.nim
+nim c -c --gc:none --cpu:arm --os:standalone --deadCodeElim:on --dynlibOverride:stm32f3 blinky.nim
 ```
 
 * Create binary to flash from generated c sources
-
-```
-N_CDECL(void, HAL_Delay)(uint32_t millis);
-```
-
 
 ```
 make
