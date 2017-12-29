@@ -88,7 +88,11 @@ OCD        = openocd
 DEFS       = -D$(MCU_MC) -DUSE_HAL_DRIVER
 
 # Debug specific definitions for semihosting
-DEFS       += -DUSE_DBPRINTF
+DEFS       += -DUSE_DBPRINTF 
+
+# Make sure that nimbase.h user stdint definitions from arm gcc stdint.h
+# https://github.com/nim-lang/Nim/blob/devel/lib/nimbase.h#L311
+DEFS       += -D HAVE_STDINT_H
 
 
 # Compiler flags
